@@ -15,6 +15,7 @@ export default function App() {
       <main className="flex min-w-full flex-col items-center ">
         <div className="w-[80%] ">
           <Navbar setlogin={setlogin} />
+          {/* testing */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
