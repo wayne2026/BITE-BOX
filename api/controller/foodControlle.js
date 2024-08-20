@@ -25,7 +25,7 @@ const addFood = async (req, res) => {
 const listFood = async (req, res) => {
     try {
         const foods = await foodModel.find({})
-        res.status(200).json({ success: true, data: foods })
+        res.status(200).json({ success: true, message:'all data fetched',data: foods })
     } catch (error) {
         console.error(error)
     }
@@ -60,11 +60,21 @@ const deleteFood = async (req, res) => {
         if (!deleteData) {
             res.status(404).json({ success: false, message: 'food not found' })
         }
-        res.status(200).json({ success: true, data: deleteData })
+        res.status(200).json({ success: true, data: deleteData,message: 'food deleted successfully' })
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const deletedDataBase=async (req,res)=>{
+    try {
+        const deleteAll=await foodModel.deleteMany({})
+        res.json({message:'deleted all'})
+
     } catch (error) {
         console.error(error)
     }
 }
 
 
-export { addFood, listFood, deleteFood }
+export { addFood, listFood, deleteFood ,deletedDataBase}
