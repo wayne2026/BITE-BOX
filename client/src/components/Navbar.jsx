@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { assets } from '../assets/assets'
 import Button from './Button'
 import{Link} from 'react-router-dom'
-export default function Navbar({setlogin}) {
+export default function Navbar() {
     const[menu,setmenu]=useState('menu')
     return (
         <section className='mt-5'>
@@ -24,8 +24,7 @@ export default function Navbar({setlogin}) {
                 </div>
                 <Button
                     label='Sign In'
-                    css='rounded-2xl w-20 h-8 bg-'
-                    setlogin={setlogin}
+                    css='rounded-2xl w-20 h-8 '
                 />
             </div>
             

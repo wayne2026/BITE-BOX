@@ -1,29 +1,29 @@
-import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import PlaceOrder from "./pages/PlaceOrder";
 import Footer from "./components/Footer";
 import LoginPage from "./components/LoginPage";
+import { useLocation } from "react-router-dom";
 
 export default function App() {
-  const [login,setlogin]=useState(false)
+  const location = useLocation();
+  const show = location.pathname !== '/login';
   return (
     <>
-    {login?<LoginPage setlogin={setlogin} login={login}/>:<></>}
-      <main className="flex min-w-full flex-col items-center ">
-        <div className="w-[80%] ">
-          <Navbar setlogin={setlogin} />
-          {/* testing */}
+      <main className={`${show? 'flex  flex-col items-center ':''}`}>
+        <div className={`${show? 'w-[80%]':''} `}>
+          {show && <Navbar />}
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/order" element={<PlaceOrder />} />
           </Routes>
         </div>
       </main>
-      <Footer/>
+      {show && <Footer />}
     </>
   )
 }

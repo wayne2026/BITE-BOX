@@ -25,7 +25,6 @@ export default function Add() {
     formData.append("price", data.price)
     formData.append("category", data.category)
     formData.append("image", image)
-
     try {
       const addFoodData = await axios.post('http://localhost:3000/api/food/add', formData)
       console.log('Data Added Successfully', addFoodData.data)
