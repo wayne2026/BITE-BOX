@@ -19,56 +19,6 @@ export default function LoginPage() {
         const value = e.target.value
         setData(data => ({ ...data, [name]: value }))
     }
-    // const onSubmitHandler = async (e) => {
-    //     e.preventDefault()
-
-    //     const loginFormData = {
-    //         email: data.email,
-    //         password: data.password
-    //     }
-    //     const registerFormData = {
-    //         name: data.name,
-    //         email: data.email,
-    //         password: data.password
-    //     }
-
-    //     if (signup) {
-    //         try {
-    //             const addRegisterData = await axios.post('http://localhost:3000/api/user/register', registerFormData,{
-    //                 withCredentials: true,
-    //             })
-
-    //             if (addRegisterData.data.success) {
-    //                 localStorage.setItem('token', addRegisterData.data.token)
-    //                 navigate('/')
-    //             }
-    //             toast.success(addRegisterData.data.message)
-    //             console.log(addRegisterData.data)
-
-    //         } catch (error) {
-    //             console.log(error)
-    //             toast.error(error.response.data.message)
-    //         }
-    //     }
-    //     else {
-    //         try {
-    //             const addLoginData = await axios.post('http://localhost:3000/api/user/login', loginFormData,{
-    //                 withCredentials: true,
-    //             })
-    //             if (addLoginData.success) {
-    //                 localStorage.setItem('token', addLoginData.data.token)
-    //                 navigate('/ ')
-    //             }
-    //             toast.success(addLoginData.data.message)
-    //             console.log(addLoginData.data)
-
-    //         } catch (error) {
-    //             console.log(error);
-    //             toast.error(error.response.data.message);
-    //         }
-    //     }
-
-    // }
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -97,6 +47,7 @@ export default function LoginPage() {
                     toast.error(addRegisterData.data.message);
                 }
                 console.log(addRegisterData.data);
+                
 
             } else {
                 const addLoginData = await axios.post('http://localhost:3000/api/user/login', loginFormData, {

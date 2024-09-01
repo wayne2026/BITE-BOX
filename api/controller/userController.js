@@ -31,7 +31,9 @@ const loginUser = async (req, res) => {
         else {
             res.status(401).json({ success: false, message: "Invalid credentials" })
         }
-
+        jwt.verify(token,process.env.JWT_SECRET,(err,user)=>{
+            if(err) return res.senStatus(403)
+        })
     } catch (error) {
         console.log(error)
     }

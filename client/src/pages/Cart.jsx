@@ -5,18 +5,18 @@ import {  useNavigate } from "react-router-dom"
 
 export default function Cart() {
   const navigate=useNavigate()
-  const { cartItems, food_list, removeFromCart,total } = useContext(StoreContext)
+  const { cartItems, allFood, removeFromCart,total } = useContext(StoreContext)
   const [emptyCart, setEmptyCart] = useState('')
   // const [total, setTotal] = useState(0)
   useEffect(() => {
-    const hasItems = food_list.some((items) => cartItems[items._id] > 0)
+    const hasItems = allFood.some((items) => cartItems[items._id] > 0)
     if (hasItems) {
       setEmptyCart('')
 
     } else {
       setEmptyCart('The Cart is Empty 😔 Go add some Food in it 🤗')
     }
-  }, [cartItems,food_list]);
+  }, [cartItems,allFood]);
   return (
     <div className="">
       <div className="flex flex-col gap-5 pt-20">
@@ -30,7 +30,7 @@ export default function Cart() {
         </div>
         <hr className="border-[1.3px]" />
         <p className=" m-auto">{emptyCart}</p>
-        {food_list.map((items) => {
+        {allFood.map((items) => {
           if (cartItems[items._id] > 0) {
             return (
               <div key={items._id} className=" grid grid-cols-6 border-b-[1.5px] items-center gap-24 pb-5 pl-2">

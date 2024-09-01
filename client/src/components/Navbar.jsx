@@ -12,7 +12,7 @@ export default function Navbar() {
                 <ul className='flex gap-5 justify-center items-center text-lg'>
                     <a href="#home"><li className={`${menu==='Home'?'border-b-2  border-black':''} cursor-pointer `} onClick={()=>setmenu('Home')}>Home</li></a>
                     <a href="#menu"><li className={`${menu==='Menu'?'border-b-2 border-black':''} cursor-pointer`} onClick={()=>setmenu('Menu')}>Menu</li></a>
-                    <a href='#mobile'><li className={`${menu==='Mobile-App'?'border-b-2 border-black':''} cursor-pointer`} onClick={()=>setmenu('Mobile-App')}>Mobile-App</li></a>
+                    {/* <a href='#mobile'><li className={`${menu==='Mobile-App'?'border-b-2 border-black':''} cursor-pointer`} onClick={()=>setmenu('Mobile-App')}>Mobile-App</li></a> */}
                     <a href='#concant-us'><li className={`${menu==='Contact-us'?'border-b-2 border-black':''} cursor-pointer`} onClick={()=>setmenu('Contact-us')}>Contact-us</li></a>
                 </ul>
                 <div className='flex gap-5'>

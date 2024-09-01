@@ -1,21 +1,22 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
-import { food_list } from "../assets/assets";
+// import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null)
 
 const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({})
     const [total, setTotal] = useState(0)
+    const [allFood,setAllFood] = useState([])
     useEffect(()=>{
         let newTotal = 0;
-        food_list.forEach((items) => {
+        allFood.forEach((items) => {
             if (cartItems[items._id] > 0) {
                 newTotal += items.price * cartItems[items._id];
             }
         });
         setTotal(newTotal);
 
-    },[cartItems])
+    },[cartItems,allFood])
     
 
 
@@ -32,12 +33,13 @@ const StoreContextProvider = (props) => {
         setCartItems((prev) => ({ ...prev, [itemsId]: prev[itemsId] - 1 }))
     }
     const contextValue = {
-        food_list,
         addToCart,
         setCartItems,
         removeFromCart,
         cartItems,
-        total
+        total,
+        setAllFood,
+        allFood
     }
     return (
         <StoreContext.Provider value={contextValue}>

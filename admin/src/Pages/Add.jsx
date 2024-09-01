@@ -26,7 +26,11 @@ export default function Add() {
     formData.append("category", data.category)
     formData.append("image", image)
     try {
-      const addFoodData = await axios.post('http://localhost:3000/api/food/add', formData)
+      const addFoodData = await axios.post('http://localhost:3000/api/food/add', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
       console.log('Data Added Successfully', addFoodData.data)
       toast.success(addFoodData.data.message)
     } catch (error) {
